@@ -1,6 +1,5 @@
 package com.travelmate.travelmate.entity;
 
-import java.sql.Blob;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -13,7 +12,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.Data;
@@ -32,9 +30,6 @@ public class CityEntity {
     private Long id;
 
     private String name;
-
-    @Lob
-    private Blob img;
 
     private String postCode;
 
