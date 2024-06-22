@@ -1,7 +1,6 @@
 package com.travelmate.travelmate.entity;
 
 import java.sql.Blob;
-import java.sql.Time;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -81,9 +80,9 @@ public class PropertyEntity {
     private Boolean terrace;
 
     // rules
-    private Time checkin;
+    private String checkin;
 
-    private Time checkout;
+    private String checkout;
 
     private Boolean agerestriction;
 

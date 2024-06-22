@@ -1,7 +1,6 @@
 package com.travelmate.travelmate.dto;
 
 import java.sql.Blob;
-import java.sql.Time;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -35,8 +34,8 @@ public class PropertyDto {
     private Boolean parking;
     private Boolean terrace;
     // rules
-    private Time checkin;
-    private Time checkout;
+    private String checkin;
+    private String checkout;
     private Boolean agerestriction;
     private Boolean smoking;
     private Boolean pets;
