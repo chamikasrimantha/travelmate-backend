@@ -34,6 +34,7 @@ public class UserServiceImpl implements UserService {
         user.setLastName(userDto.getLastName());
         user.setPhoneNo(userDto.getPhoneNo());
         user.setAddress(userDto.getAddress());
+        // email
         return userRepository.save(user);
     }
 
@@ -45,6 +46,7 @@ public class UserServiceImpl implements UserService {
         admin.setPassword(adminDto.getPassword());
         admin.setRole(UserRole.ADMIN);
         admin.setName(adminDto.getName());
+        // email
         return userRepository.save(admin);
     }
 
@@ -59,6 +61,7 @@ public class UserServiceImpl implements UserService {
         partner.setLastName(partnerDto.getLastName());
         partner.setPhoneNo(partnerDto.getPhoneNo());
         partner.setAddress(partnerDto.getAddress());
+        // email
         return userRepository.save(partner);
     }
 
