@@ -21,7 +21,7 @@ public class BookingDto {
     private String bookingFor;
     private String rentingAdditionals;
     private String specialRequests;
-    private Time arrivalTime;
+    private String arrivalTime;
     private String paymentMethod;
     private Long userId;
     private Long propertyId;

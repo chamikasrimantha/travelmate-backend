@@ -51,7 +51,7 @@ public class BookingEntity {
 
     private String specialRequests;
 
-    private Time arrivalTime;
+    private String arrivalTime;
 
     // 3rd section - payment
 
