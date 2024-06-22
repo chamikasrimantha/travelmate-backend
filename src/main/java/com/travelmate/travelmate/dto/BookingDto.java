@@ -1,7 +1,6 @@
 package com.travelmate.travelmate.dto;
 
 import java.sql.Date;
-import java.sql.Time;
 
 import lombok.Getter;
 import lombok.Setter;
