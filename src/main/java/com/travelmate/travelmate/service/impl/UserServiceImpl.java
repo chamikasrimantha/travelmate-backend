@@ -241,7 +241,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserEntity changeUserPassword(Long id, UserPwdDto userPwdDto) {
-        return null;
+        UserEntity existingUser = userRepository.findById(id).orElse(null);
+        if (existingUser!=null && existingUser instanceof User){
+            existingUser.setPassword(userPwdDto.getPassword());
+            return userRepository.save(existingUser);
+        } else {
+            return null;
+        }
     }
 
 }
