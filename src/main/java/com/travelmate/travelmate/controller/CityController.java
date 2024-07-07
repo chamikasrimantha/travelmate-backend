@@ -42,7 +42,7 @@ public class CityController {
         }
     }
 
-    @GetMapping("/cities")
+    @GetMapping("/cities/{id}")
     public ResponseEntity<CityEntity> getCitiesById(@PathVariable Long id){
         CityEntity cityEntity = cityService.getCitiesById(id);
         if (cityEntity!=null) {
@@ -52,7 +52,7 @@ public class CityController {
         }
     }
 
-    @GetMapping("/cities/{id}/districts")
+    @GetMapping("/districts/{id}/cities")
     public ResponseEntity<List<CityEntity>> getCitiesByDistrict(@PathVariable Long id){
         return ResponseEntity.ok().body(cityService.getCitiesByDistrict(id));
     }

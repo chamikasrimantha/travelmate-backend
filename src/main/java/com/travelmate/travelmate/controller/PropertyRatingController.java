@@ -44,7 +44,7 @@ public class PropertyRatingController {
         }
     }
 
-    @GetMapping("/property-ratings")
+    @GetMapping("/property-ratings/{id}")
     public ResponseEntity<PropertyRatingEntity> getPropertyRatingsById(@PathVariable Long id){
         PropertyRatingEntity propertyRatingEntity = propertyRatingService.getPropertyRatingsById(id);
         if (propertyRatingEntity!=null) {

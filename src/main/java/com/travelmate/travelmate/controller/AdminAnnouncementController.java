@@ -44,13 +44,13 @@ public class AdminAnnouncementController {
         }
     }
 
-    @GetMapping("/admin-announcements")
+    @GetMapping("/admin-announcements/{id}")
     public ResponseEntity<AdminAnnouncementEntity> getAdminAnnouncementsById(@PathVariable Long id){
         AdminAnnouncementEntity adminAnnouncementEntity = adminAnnouncementService.getAdminAnnouncementsById(id);
         if (adminAnnouncementEntity!=null) {
             return ResponseEntity.status(HttpStatus.OK).body(adminAnnouncementEntity);
         } else {
-            return ResponseEntity.status(400).body(null);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
 
