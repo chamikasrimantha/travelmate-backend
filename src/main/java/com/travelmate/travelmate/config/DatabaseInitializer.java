@@ -3,10 +3,14 @@ package com.travelmate.travelmate.config;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 import org.springframework.jdbc.datasource.init.ScriptException;
 import org.springframework.stereotype.Component;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.sql.DataSource;
 
@@ -16,17 +20,31 @@ public class DatabaseInitializer {
     @Autowired
     private DataSource dataSource;
 
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
-
     private boolean isDataPresent() {
-        Integer provinceCount = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM province_entity", Integer.class);
-        Integer districtCount = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM district_entity", Integer.class);
-        Integer cityCount = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM city_entity", Integer.class);
+        boolean dataPresent = false;
+        try (Connection connection = dataSource.getConnection();
+             Statement statement = connection.createStatement()) {
 
-        return (provinceCount != null && provinceCount > 0) ||
-                (districtCount != null && districtCount > 0) ||
-                (cityCount != null && cityCount > 0);
+            ResultSet provinceResult = statement.executeQuery("SELECT COUNT(*) FROM province_entity");
+            if (provinceResult.next() && provinceResult.getInt(1) > 0) {
+                dataPresent = true;
+            }
+
+            ResultSet districtResult = statement.executeQuery("SELECT COUNT(*) FROM district_entity");
+            if (districtResult.next() && districtResult.getInt(1) > 0) {
+                dataPresent = true;
+            }
+
+            ResultSet cityResult = statement.executeQuery("SELECT COUNT(*) FROM city_entity");
+            if (cityResult.next() && cityResult.getInt(1) > 0) {
+                dataPresent = true;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return dataPresent;
     }
 
     @PostConstruct
