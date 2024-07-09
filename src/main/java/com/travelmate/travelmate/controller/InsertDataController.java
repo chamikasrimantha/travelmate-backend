@@ -1,4 +1,4 @@
-package com.travelmate.travelmate.config;
+package com.travelmate.travelmate.controller;
 
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import java.sql.Statement;
 import javax.sql.DataSource;
 
 @Component
-public class DatabaseInitializer {
+public class InsertDataController {
 
     @Autowired
     private DataSource dataSource;
