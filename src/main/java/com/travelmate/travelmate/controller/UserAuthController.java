@@ -44,7 +44,7 @@ public class UserAuthController {
     @Autowired
     JwtUtils jwtUtils;
 
-    @PostMapping("/auth/login")
+    @PostMapping("/auth/user/login")
     public ResponseEntity<?> userLogin(@RequestBody LoginDto loginDto){
         Authentication authentication = authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword())
@@ -74,7 +74,7 @@ public class UserAuthController {
         return ResponseEntity.ok().body(token);
     }
 
-    @PostMapping("/auth/register")
+    @PostMapping("/auth/user/register")
     public ResponseEntity<?> userRegister(@RequestBody UserDto userDto){
         if (userRepository.existsByUsername(userDto.getUsername())) {
             return ResponseEntity.badRequest().body("Username is already in use");

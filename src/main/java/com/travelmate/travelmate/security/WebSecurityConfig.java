@@ -64,15 +64,17 @@ public class WebSecurityConfig {
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/**",
+                        .requestMatchers("/auth/user/**",
+                                "/auth/partner/**",
+                                "/auth/admin/**",
                                 "/v3/api-docs/**",
                                 "v3/api-docs.yaml",
                                 "/swagger-ui/**",
                                 "/swagger-ui.html")
                         .permitAll()
-                        .requestMatchers("/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/partner/**").hasRole("PARTNER")
-                        .requestMatchers("/user/**").hasRole("USER")
+                        .requestMatchers("/auth/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/auth/partner/**").hasRole("PARTNER")
+                        .requestMatchers("/auth/user/**").hasRole("USER")
                         .anyRequest().authenticated());
 
         http.authenticationProvider(authenticationProvider());
