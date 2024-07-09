@@ -27,7 +27,7 @@ public class CityServiceImpl implements CityService{
         if (districtEntity!=null) {
             CityEntity cityEntity = new CityEntity();
             cityEntity.setName(cityDto.getName());
-            cityEntity.setPostCode(cityDto.getPostCode());
+            cityEntity.setPostcode(cityDto.getPostcode());
             cityEntity.setLatitude(cityDto.getLatitude());
             cityEntity.setLongitude(cityDto.getLongitude());
             cityEntity.setDistrictEntity(districtEntity);
