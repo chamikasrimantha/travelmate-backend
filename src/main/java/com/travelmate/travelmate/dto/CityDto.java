@@ -8,7 +8,7 @@ import lombok.Setter;
 public class CityDto {
     private Long id;
     private String name;
-    private String postCode;
+    private String postcode;
     private Double latitude;
     private Double longitude;
     private Long districtId;

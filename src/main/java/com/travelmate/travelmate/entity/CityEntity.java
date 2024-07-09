@@ -31,7 +31,7 @@ public class CityEntity {
 
     private String name;
 
-    private String postCode;
+    private String postcode;
 
     private Double latitude;
 
