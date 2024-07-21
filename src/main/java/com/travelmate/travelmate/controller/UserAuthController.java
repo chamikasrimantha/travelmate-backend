@@ -9,21 +9,16 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.travelmate.travelmate.dto.AdminDto;
 import com.travelmate.travelmate.dto.LoginDto;
-import com.travelmate.travelmate.dto.PartnerDto;
-import com.travelmate.travelmate.dto.UserDto;
 import com.travelmate.travelmate.entity.Admin;
 import com.travelmate.travelmate.entity.Partner;
 import com.travelmate.travelmate.entity.User;
-import com.travelmate.travelmate.entity.UserRole;
 import com.travelmate.travelmate.repository.UserRepository;
 import com.travelmate.travelmate.security.jwt.JwtUtils;
 import com.travelmate.travelmate.service.UserService;
-
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -75,60 +70,36 @@ public class UserAuthController {
     }
 
     @PostMapping("/auth/user/register")
-    public ResponseEntity<?> userRegister(@RequestBody UserDto userDto){
-        if (userRepository.existsByUsername(userDto.getUsername())) {
+    public ResponseEntity<?> userRegister(@RequestBody User user){
+        if (userRepository.existsByUsername(user.getUsername())) {
             return ResponseEntity.badRequest().body("Username is already in use");
         }
-        if (userRepository.existsByEmail(userDto.getEmail())) {
+        if (userRepository.existsByEmail(user.getEmail())) {
             return ResponseEntity.badRequest().body("Email is already in use");
         }
-        User user = new User();
-        user.setUsername(userDto.getUsername());
-        user.setEmail(userDto.getEmail());
-        user.setPassword(userDto.getPassword());
-        user.setRole(UserRole.USER);
-        user.setFirstName(userDto.getFirstName());
-        user.setLastName(userDto.getLastName());
-        user.setPhoneNo(userDto.getPhoneNo());
-        user.setAddress(userDto.getAddress());
-        return ResponseEntity.ok(userService.createUser(userDto));
+        return ResponseEntity.ok(userService.createUser(user));
     }
 
     @PostMapping("/auth/partner/register")
-    public ResponseEntity<?> partnerRegister(@RequestBody PartnerDto partnerDto){
-        if (userRepository.existsByUsername(partnerDto.getUsername())) {
+    public ResponseEntity<?> partnerRegister(@RequestBody Partner partner){
+        if (userRepository.existsByUsername(partner.getUsername())) {
             return ResponseEntity.badRequest().body("Username is already in use");
         }
-        if (userRepository.existsByEmail(partnerDto.getEmail())) {
+        if (userRepository.existsByEmail(partner.getEmail())) {
             return ResponseEntity.badRequest().body("Email is already in use");
         }
-        Partner partner = new Partner();
-        partner.setUsername(partnerDto.getUsername());
-        partner.setEmail(partnerDto.getEmail());
-        partner.setPassword(partnerDto.getPassword());
-        partner.setRole(UserRole.PARTNER);
-        partner.setFirstName(partnerDto.getFirstName());
-        partner.setLastName(partnerDto.getLastName());
-        partner.setPhoneNo(partnerDto.getPhoneNo());
-        partner.setAddress(partnerDto.getAddress());
-        return ResponseEntity.ok(userService.createPartner(partnerDto));
+        return ResponseEntity.ok(userService.createPartner(partner));
     }
 
     @PostMapping("/auth/admin/register")
-    public ResponseEntity<?> adminRegister(@RequestBody AdminDto adminDto){
-        if (userRepository.existsByUsername(adminDto.getUsername())) {
+    public ResponseEntity<?> adminRegister(@RequestBody Admin admin){
+        if (userRepository.existsByUsername(admin.getUsername())) {
             return ResponseEntity.badRequest().body("Username is already in use");
         }
-        if (userRepository.existsByEmail(adminDto.getEmail())) {
+        if (userRepository.existsByEmail(admin.getEmail())) {
             return ResponseEntity.badRequest().body("Email is already in use");
         }
-        Admin admin = new Admin();
-        admin.setUsername(adminDto.getUsername());
-        admin.setEmail(adminDto.getEmail());
-        admin.setPassword(adminDto.getPassword());
-        admin.setRole(UserRole.ADMIN);
-        admin.setName(adminDto.getName());
-        return ResponseEntity.ok(userService.createAdmin(adminDto));
+        return ResponseEntity.ok(userService.createAdmin(admin));
     }
     
 }

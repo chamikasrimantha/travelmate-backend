@@ -15,9 +15,9 @@ import com.travelmate.travelmate.entity.UserEntity;
 
 @Service
 public interface UserService {
-    UserEntity createUser(UserDto userDto);
-    UserEntity createPartner(PartnerDto partnerDto);
-    UserEntity createAdmin(AdminDto adminDtO);
+    UserEntity createUser(User user);
+    UserEntity createPartner(Partner partner);
+    UserEntity createAdmin(Admin admin);
     UserEntity getUserById(Long id);
     List<User> getAllUsers();
     List<Partner> getAllPartners();

@@ -29,18 +29,18 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/users")
-    public UserEntity createUser(@RequestBody UserDto userDto){
-        return userService.createUser(userDto);
+    public UserEntity createUser(@RequestBody User user){
+        return userService.createUser(user);
     }
 
     @PostMapping("/partners")
-    public UserEntity createPartner(@RequestBody PartnerDto partnerDto){
-        return userService.createPartner(partnerDto);
+    public UserEntity createPartner(@RequestBody Partner partner){
+        return userService.createPartner(partner);
     }
 
     @PostMapping("/admins")
-    public UserEntity createAdmin(@RequestBody AdminDto adminDto){
-        return userService.createAdmin(adminDto);
+    public UserEntity createAdmin(@RequestBody Admin admin){
+        return userService.createAdmin(admin);
     }
 
     @PutMapping("/users/{id}")

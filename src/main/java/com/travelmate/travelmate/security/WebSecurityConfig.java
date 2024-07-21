@@ -64,9 +64,19 @@ public class WebSecurityConfig {
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/user/**",
-                                "/auth/partner/**",
-                                "/auth/admin/**",
+                        .requestMatchers("/auth/user/register",
+                                "/auth/user/login",
+                                "/auth/partner/register",
+                                "/auth/partner/login",
+                                "/auth/admin/register/**",
+                                "/auth/admin/login",
+                                "/users/**",
+                                "/partners/**",
+                                "/admins/**",
+                                "/cities/**",
+                                "/city-ratings/**",
+                                "/properties/**",
+                                "/categories/**",
                                 "/v3/api-docs/**",
                                 "v3/api-docs.yaml",
                                 "/swagger-ui/**",
