@@ -77,6 +77,7 @@ public class WebSecurityConfig {
                                 "/city-ratings/**",
                                 "/properties/**",
                                 "/categories/**",
+                                "/admin-announcements/**",
                                 "/v3/api-docs/**",
                                 "v3/api-docs.yaml",
                                 "/swagger-ui/**",
