@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.travelmate.travelmate.dto.AuthResponse;
 import com.travelmate.travelmate.dto.LoginDto;
 import com.travelmate.travelmate.entity.Admin;
 import com.travelmate.travelmate.entity.Partner;
 import com.travelmate.travelmate.entity.User;
 import com.travelmate.travelmate.repository.UserRepository;
+import com.travelmate.travelmate.security.UserDetailsImpl;
 import com.travelmate.travelmate.security.jwt.JwtUtils;
 import com.travelmate.travelmate.service.UserService;
 
@@ -40,37 +42,38 @@ public class UserAuthController {
     JwtUtils jwtUtils;
 
     @PostMapping("/auth/user/login")
-    public ResponseEntity<?> userLogin(@RequestBody LoginDto loginDto){
+    public ResponseEntity<?> userLogin(@RequestBody LoginDto loginDto) {
         Authentication authentication = authenticationManager.authenticate(
-            new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword())
-        );
+                new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String token = jwtUtils.generateJwtToken(authentication);
-        return ResponseEntity.ok().body(token);
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        Long userId = userDetails.getId();
+        return ResponseEntity.ok().body(new AuthResponse(token, userId));
     }
 
     @PostMapping("/auth/partner/login")
-    public ResponseEntity<?> partnerLogin(@RequestBody LoginDto loginDto){
+    public ResponseEntity<?> partnerLogin(@RequestBody LoginDto loginDto) {
         Authentication authentication = authenticationManager.authenticate(
-            new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword())
-        );
+                new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String token = jwtUtils.generateJwtToken(authentication);
-        return ResponseEntity.ok().body(token);
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        Long userId = userDetails.getId();
+        return ResponseEntity.ok().body(new AuthResponse(token, userId));
     }
 
     @PostMapping("/auth/admin/login")
-    public ResponseEntity<?> adminLogin(@RequestBody LoginDto loginDto){
+    public ResponseEntity<?> adminLogin(@RequestBody LoginDto loginDto) {
         Authentication authentication = authenticationManager.authenticate(
-            new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword())
-        );
+                new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String token = jwtUtils.generateJwtToken(authentication);
         return ResponseEntity.ok().body(token);
     }
 
     @PostMapping("/auth/user/register")
-    public ResponseEntity<?> userRegister(@RequestBody User user){
+    public ResponseEntity<?> userRegister(@RequestBody User user) {
         if (userRepository.existsByUsername(user.getUsername())) {
             return ResponseEntity.badRequest().body("Username is already in use");
         }
@@ -81,7 +84,7 @@ public class UserAuthController {
     }
 
     @PostMapping("/auth/partner/register")
-    public ResponseEntity<?> partnerRegister(@RequestBody Partner partner){
+    public ResponseEntity<?> partnerRegister(@RequestBody Partner partner) {
         if (userRepository.existsByUsername(partner.getUsername())) {
             return ResponseEntity.badRequest().body("Username is already in use");
         }
@@ -92,7 +95,7 @@ public class UserAuthController {
     }
 
     @PostMapping("/auth/admin/register")
-    public ResponseEntity<?> adminRegister(@RequestBody Admin admin){
+    public ResponseEntity<?> adminRegister(@RequestBody Admin admin) {
         if (userRepository.existsByUsername(admin.getUsername())) {
             return ResponseEntity.badRequest().body("Username is already in use");
         }
@@ -101,5 +104,5 @@ public class UserAuthController {
         }
         return ResponseEntity.ok(userService.createAdmin(admin));
     }
-    
+
 }

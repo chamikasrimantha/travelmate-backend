@@ -15,7 +15,7 @@ public class PropertyDto {
     private String location;
     private String sentence;
     private String description;
-    private Blob img;
+    private String img;
     private Double price;
     // bedrooms
     private Long bedrooms;

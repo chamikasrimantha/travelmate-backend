@@ -13,7 +13,7 @@ import com.travelmate.travelmate.entity.UserEntity;
 import com.travelmate.travelmate.repository.UserRepository;
 
 @Service
-public class UserDetailsServiceImpl implements UserDetailsService{
+public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
     UserRepository userRepository;
@@ -22,18 +22,17 @@ public class UserDetailsServiceImpl implements UserDetailsService{
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserEntity userEntity = userRepository.findByUsername(username).orElse(null);
 
-        if( userEntity == null ) {
+        if (userEntity == null) {
             throw new UsernameNotFoundException("User is not found with the username");
         }
 
         SimpleGrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + userEntity.getRole().name());
 
-
-        return org.springframework.security.core.userdetails.User.builder()
-            .username(userEntity.getUsername())
-            .password(userEntity.getPassword())
-            .authorities(Collections.singletonList(authority))
-            .build();
+        return new UserDetailsImpl(
+                userEntity.getId(),
+                userEntity.getUsername(),
+                userEntity.getPassword(),
+                Collections.singletonList(authority));
     }
-    
+
 }

@@ -1,6 +1,5 @@
 package com.travelmate.travelmate.entity;
 
-import java.sql.Blob;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -43,8 +42,7 @@ public class PropertyEntity {
 
     private String description;
 
-    @Lob
-    private Blob img;
+    private String img;
 
     private Double price;
 
