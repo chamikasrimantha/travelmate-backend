@@ -9,5 +9,5 @@ public class PartnerAnnouncementDto {
     private Long id;
     private String title;
     private String message;
-    private Long proeprtyId;
+    private Long propertyId;
 }

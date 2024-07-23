@@ -23,7 +23,7 @@ public class PartnerAnnouncementServiceImpl implements PartnerAnnouncementServic
 
     @Override
     public PartnerAnnouncementEntity createPartnerAnnouncement(PartnerAnnouncementDto partnerAnnouncementDto) {
-        PropertyEntity propertyEntity = propertyRepository.findById(partnerAnnouncementDto.getProeprtyId()).orElse(null);
+        PropertyEntity propertyEntity = propertyRepository.findById(partnerAnnouncementDto.getPropertyId()).orElse(null);
         if (propertyEntity!=null) {
             PartnerAnnouncementEntity partnerAnnouncementEntity = new PartnerAnnouncementEntity();
             partnerAnnouncementEntity.setTitle(partnerAnnouncementDto.getTitle());
