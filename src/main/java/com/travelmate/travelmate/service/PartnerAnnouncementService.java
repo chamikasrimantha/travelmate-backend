@@ -13,6 +13,7 @@ public interface PartnerAnnouncementService {
     List<PartnerAnnouncementEntity> getAllPartnerAnnouncements();
     PartnerAnnouncementEntity getPartnerAnnouncementsById(Long id);
     List<PartnerAnnouncementEntity> getPartnerAnnouncementsByProperty(Long id);
+    List<PartnerAnnouncementEntity> getPartnerAnnouncementsByUser(Long id);
     PartnerAnnouncementEntity updatePartnerAnnouncement(Long id, PartnerAnnouncementEntity partnerAnnouncementEntity);
     PartnerAnnouncementEntity deletePartnerAnnouncement(Long id);
 }

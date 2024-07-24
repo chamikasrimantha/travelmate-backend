@@ -33,4 +33,9 @@ public class PartnerAnnouncementEntity {
     @JoinColumn(name = "propertyId")
     private PropertyEntity propertyEntity;
 
+    // many-to-one with user entity
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    private UserEntity userEntity;
+
 }

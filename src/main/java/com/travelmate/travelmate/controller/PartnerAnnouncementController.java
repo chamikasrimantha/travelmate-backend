@@ -59,6 +59,11 @@ public class PartnerAnnouncementController {
         return ResponseEntity.ok().body(partnerAnnouncementService.getPartnerAnnouncementsByProperty(id));
     }
 
+    @GetMapping("/users/{id}/partner-announcements")
+    public ResponseEntity<List<PartnerAnnouncementEntity>> getPartnerAnnouncementsByUser(@PathVariable Long id){
+        return ResponseEntity.ok().body(partnerAnnouncementService.getPartnerAnnouncementsByUser(id));
+    }
+
     @PutMapping("/partner-announcements/{id}")
     public PartnerAnnouncementEntity updatePartnerAnnouncement(@PathVariable Long id, @RequestBody PartnerAnnouncementEntity partnerAnnouncementEntity){
         return partnerAnnouncementService.updatePartnerAnnouncement(id, partnerAnnouncementEntity);
