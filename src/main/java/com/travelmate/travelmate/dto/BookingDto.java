@@ -18,7 +18,9 @@ public class BookingDto {
     private String address;
     private String phoneNo;
     private String bookingFor;
-    private String rentingAdditionals;
+    private Boolean airportShuttle;
+    private Boolean rentingCar;
+    private Boolean rentingBicycle;
     private String specialRequests;
     private String arrivalTime;
     private String paymentMethod;

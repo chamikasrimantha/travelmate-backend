@@ -49,7 +49,9 @@ public class BookingServiceImpl implements BookingService {
             bookingEntity.setAddress(bookingDto.getAddress());
             bookingEntity.setPhoneNo(bookingDto.getPhoneNo());
             bookingEntity.setBookingFor(bookingDto.getBookingFor());
-            bookingEntity.setRentingAdditionals(bookingDto.getRentingAdditionals());
+            bookingEntity.setAirportShuttle(bookingDto.getAirportShuttle());
+            bookingEntity.setRentingCar(bookingDto.getRentingCar());
+            bookingEntity.setRentingBicycle(bookingDto.getRentingBicycle());
             bookingEntity.setSpecialRequests(bookingDto.getSpecialRequests());
             bookingEntity.setArrivalTime(bookingDto.getArrivalTime());
             bookingEntity.setPaymentMethod(bookingDto.getPaymentMethod());
@@ -72,34 +74,39 @@ public class BookingServiceImpl implements BookingService {
     }
 
     private void sendBookingSuccessEmail(BookingEntity bookingEntity) throws MessagingException {
-        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
-        MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
+        // MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+        // MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
 
-        String htmlMsg = "<div style='font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ccc;'>"
-                +
-                "<h2 style='color: #4CAF50;'>Booking success with TravelMate.lk</h2>" +
-                "<p>Dear " + bookingEntity.getFirstName() + "" + bookingEntity.getLastName() + ",</p>" +
-                "<p>Your booking was successful with <strong>" + bookingEntity.getPropertyEntity().getName()
-                + "</strong></p>" +
-                "<p>Here's what you can do next:</p>" +
-                "<ul>" +
-                "<li><a href='#' style='color: #4CAF50;'>View Receipt</a></li>" +
-                "<li><a href='#' style='color: #4CAF50;'>Download Receipt</a></li>" +
-                "<li><a href='#' style='color: #4CAF50;'>Contact support</a></li>" +
-                "</ul>" +
-                "<p>If you have any questions, feel free to visit our <a href='#' style='color: #4CAF50;'>help center</a>.</p>"
-                +
-                "<p>Best regards,<br>TravelMate Team</p>" +
-                "<hr>" +
-                "<p style='font-size: 12px; color: #777;'>This is an automated message, please do not reply.</p>" +
-                "</div>";
+        // String htmlMsg = "<div style='font-family: Arial, sans-serif; max-width:
+        // 600px; margin: auto; padding: 20px; border: 1px solid #ccc;'>"
+        // +
+        // "<h2 style='color: #4CAF50;'>Booking success with TravelMate.lk</h2>" +
+        // "<p>Dear " + bookingEntity.getFirstName() + "" + bookingEntity.getLastName()
+        // + ",</p>" +
+        // "<p>Your booking was successful with <strong>" +
+        // bookingEntity.getPropertyEntity().getName()
+        // + "</strong></p>" +
+        // "<p>Here's what you can do next:</p>" +
+        // "<ul>" +
+        // "<li><a href='#' style='color: #4CAF50;'>View Receipt</a></li>" +
+        // "<li><a href='#' style='color: #4CAF50;'>Download Receipt</a></li>" +
+        // "<li><a href='#' style='color: #4CAF50;'>Contact support</a></li>" +
+        // "</ul>" +
+        // "<p>If you have any questions, feel free to visit our <a href='#'
+        // style='color: #4CAF50;'>help center</a>.</p>"
+        // +
+        // "<p>Best regards,<br>TravelMate Team</p>" +
+        // "<hr>" +
+        // "<p style='font-size: 12px; color: #777;'>This is an automated message,
+        // please do not reply.</p>" +
+        // "</div>";
 
-        helper.setTo(bookingEntity.getEmail());
-        helper.setSubject("Booking success");
-        helper.setText(htmlMsg, true);
-        helper.setFrom("tech1234music@gmail.com");
+        // helper.setTo(bookingEntity.getEmail());
+        // helper.setSubject("Booking success");
+        // helper.setText(htmlMsg, true);
+        // helper.setFrom("tech1234music@gmail.com");
 
-        javaMailSender.send(mimeMessage);
+        // javaMailSender.send(mimeMessage);
     }
 
     @Override

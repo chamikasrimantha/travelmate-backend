@@ -46,7 +46,11 @@ public class BookingEntity {
 
     private String bookingFor; // mainGuest or someoneElse
 
-    private String rentingAdditionals; // airportShuttle, rentCar, rentBicycle
+    private Boolean airportShuttle;
+
+    private Boolean rentingCar;
+    
+    private Boolean rentingBicycle;
 
     private String specialRequests;
 
