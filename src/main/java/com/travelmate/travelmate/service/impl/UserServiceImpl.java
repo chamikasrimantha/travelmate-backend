@@ -60,36 +60,36 @@ public class UserServiceImpl implements UserService {
     }
 
     private void sendUserRegistrationEmail(UserEntity userEntity) throws MessagingException {
-        // if (userEntity instanceof User) {
-        //     User user = (User) userEntity;
-        //     MimeMessage mimeMessage = javaMailSender.createMimeMessage();
-        //     MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
+        if (userEntity instanceof User) {
+            User user = (User) userEntity;
+            MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
 
-        //     String htmlMsg = "<div style='font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ccc;'>"
-        //             +
-        //             "<h2 style='color: #4CAF50;'>Welcome to TravelMate.lk</h2>" +
-        //             "<p>Dear " + user.getFirstName() + " " + user.getLastName() + ",</p>" +
-        //             "<p>Thank you for registering. Your username is: <strong>" + user.getUsername() + "</strong></p>" +
-        //             "<p>We're excited to have you on board. Here's what you can do next:</p>" +
-        //             "<ul>" +
-        //             "<li><a href='#' style='color: #4CAF50;'>Complete your profile</a></li>" +
-        //             "<li><a href='#' style='color: #4CAF50;'>Explore our services</a></li>" +
-        //             "<li><a href='#' style='color: #4CAF50;'>Contact support</a></li>" +
-        //             "</ul>" +
-        //             "<p>If you have any questions, feel free to visit our <a href='#' style='color: #4CAF50;'>help center</a>.</p>"
-        //             +
-        //             "<p>Best regards,<br>TravelMate Team</p>" +
-        //             "<hr>" +
-        //             "<p style='font-size: 12px; color: #777;'>This is an automated message, please do not reply.</p>" +
-        //             "</div>";
+            String htmlMsg = "<div style='font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ccc;'>"
+                    +
+                    "<h2 style='color: #4CAF50;'>Welcome to TravelMate.lk</h2>" +
+                    "<p>Dear " + user.getFirstName() + " " + user.getLastName() + ",</p>" +
+                    "<p>Thank you for registering. Your username is: <strong>" + user.getUsername() + "</strong></p>" +
+                    "<p>We're excited to have you on board. Here's what you can do next:</p>" +
+                    "<ul>" +
+                    "<li><a href='#' style='color: #4CAF50;'>Complete your profile</a></li>" +
+                    "<li><a href='#' style='color: #4CAF50;'>Explore top properties</a></li>" +
+                    "<li><a href='#' style='color: #4CAF50;'>Contact support</a></li>" +
+                    "</ul>" +
+                    "<p>If you have any questions, feel free to visit our <a href='#' style='color: #4CAF50;'>help center</a>.</p>"
+                    +
+                    "<p>Best regards,<br>TravelMate Team</p>" +
+                    "<hr>" +
+                    "<p style='font-size: 12px; color: #777;'>This is an automated message, please do not reply.</p>" +
+                    "</div>";
 
-        //     helper.setTo(user.getEmail());
-        //     helper.setSubject("Registration Successful");
-        //     helper.setText(htmlMsg, true);
-        //     helper.setFrom("tech1234music@gmail.com");
+            helper.setTo(user.getEmail());
+            helper.setSubject("Registration Successful");
+            helper.setText(htmlMsg, true);
+            helper.setFrom("tech1234music@gmail.com");
 
-        //     javaMailSender.send(mimeMessage);
-        // }
+            javaMailSender.send(mimeMessage);
+        }
     }
 
     @Override
@@ -129,37 +129,38 @@ public class UserServiceImpl implements UserService {
     }
 
     private void sendPartnerRegistrationEmail(UserEntity userEntity) throws MessagingException {
-        // if (userEntity instanceof User) {
-        //     Partner partner = (Partner) userEntity;
-        //     MimeMessage mimeMessage = javaMailSender.createMimeMessage();
-        //     MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
+        if (userEntity instanceof User) {
+            Partner partner = (Partner) userEntity;
+            MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
 
-        //     String htmlMsg = "<div style='font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ccc;'>"
-        //             +
-        //             "<h2 style='color: #4CAF50;'>Welcome to TravelMate.lk</h2>" +
-        //             "<p>Dear " + partner.getFirstName() + " " + partner.getLastName() + ",</p>" +
-        //             "<p>Thank you for registering. Your username is: <strong>" + partner.getUsername() + "</strong></p>"
-        //             +
-        //             "<p>We're excited to have you on board. Here's what you can do next:</p>" +
-        //             "<ul>" +
-        //             "<li><a href='#' style='color: #4CAF50;'>Complete your profile</a></li>" +
-        //             "<li><a href='#' style='color: #4CAF50;'>Explore our services</a></li>" +
-        //             "<li><a href='#' style='color: #4CAF50;'>Contact support</a></li>" +
-        //             "</ul>" +
-        //             "<p>If you have any questions, feel free to visit our <a href='#' style='color: #4CAF50;'>help center</a>.</p>"
-        //             +
-        //             "<p>Best regards,<br>TravelMate Team</p>" +
-        //             "<hr>" +
-        //             "<p style='font-size: 12px; color: #777;'>This is an automated message, please do not reply.</p>" +
-        //             "</div>";
+            String htmlMsg = "<div style='font-family: Arial, sans-serif; max-width:600px; margin: auto; padding: 20px; border: 1px solid #ccc;'>"
+                    +
+                    "<h2 style='color: #4CAF50;'>Welcome to TravelMate.lk</h2>" +
+                    "<p>Dear " + partner.getFirstName() + " " + partner.getLastName() + ",</p>" +
+                    "<p>Thank you for registering. Your username is: <strong>" +
+                    partner.getUsername() + "</strong></p>"
+                    +
+                    "<p>We're excited to have you on board. Here's what you can do next:</p>" +
+                    "<ul>" +
+                    "<li><a href='#' style='color: #4CAF50;'>Complete your profile</a></li>" +
+                    "<li><a href='#' style='color: #4CAF50;'>Explore top properties</a></li>" +
+                    "<li><a href='#' style='color: #4CAF50;'>Contact support</a></li>" +
+                    "</ul>" +
+                    "<p>If you have any questions, feel free to visit our <a href='#' style='color: #4CAF50;'>help center</a>.</p>"
+                    +
+                    "<p>Best regards,<br>TravelMate Team</p>" +
+                    "<hr>" +
+                    "<p style='font-size: 12px; color: #777;'>This is an automated message, please do not reply.</p>" +
+                    "</div>";
 
-        //     helper.setTo(partner.getEmail());
-        //     helper.setSubject("Registration Successful");
-        //     helper.setText(htmlMsg, true);
-        //     helper.setFrom("tech1234music@gmail.com");
+            helper.setTo(partner.getEmail());
+            helper.setSubject("Registration Successful");
+            helper.setText(htmlMsg, true);
+            helper.setFrom("tech1234music@gmail.com");
 
-        //     javaMailSender.send(mimeMessage);
-        // }
+            javaMailSender.send(mimeMessage);
+        }
     }
 
     @Override
@@ -246,7 +247,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserEntity changeUserPassword(Long id, UserPwdDto userPwdDto) {
         UserEntity existingUser = userRepository.findById(id).orElse(null);
-        if (existingUser!=null && existingUser instanceof User){
+        if (existingUser != null && existingUser instanceof User) {
             existingUser.setPassword(userPwdDto.getPassword());
             return userRepository.save(existingUser);
         } else {
