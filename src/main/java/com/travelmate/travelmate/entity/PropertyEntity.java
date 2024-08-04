@@ -12,7 +12,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.Data;
@@ -126,9 +125,9 @@ public class PropertyEntity {
     private List<BookingEntity> bookings;
 
     // one-to-many with chat entity
-    @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "propertyEntity", cascade = CascadeType.ALL)
-    private List<ChatEntity> chats;
+    // @JsonIgnore
+    // @OneToMany(fetch = FetchType.LAZY, mappedBy = "propertyEntity", cascade = CascadeType.ALL)
+    // private List<ChatEntity> chats;
 
     // many-to-one with category entity
     @ManyToOne

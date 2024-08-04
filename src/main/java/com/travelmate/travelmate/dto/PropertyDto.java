@@ -1,7 +1,5 @@
 package com.travelmate.travelmate.dto;
 
-import java.sql.Blob;
-
 import lombok.Getter;
 import lombok.Setter;
 

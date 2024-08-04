@@ -42,8 +42,8 @@ public class User extends UserEntity {
     private List<BookingEntity> bookings;
 
     // one-to-many with chat entity
-    @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "userEntity", cascade = CascadeType.ALL)
-    private List<ChatEntity> chats;
+    // @JsonIgnore
+    // @OneToMany(fetch = FetchType.LAZY, mappedBy = "userEntity", cascade = CascadeType.ALL)
+    // private List<ChatEntity> chats;
 
 }

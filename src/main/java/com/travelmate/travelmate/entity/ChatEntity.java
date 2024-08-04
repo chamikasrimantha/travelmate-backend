@@ -1,5 +1,7 @@
 package com.travelmate.travelmate.entity;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,12 +30,14 @@ public class ChatEntity {
 
     // many-to-one with user entity
     @ManyToOne
-    @JoinColumn(name = "userId")
-    private UserEntity userEntity;
+    @JoinColumn(name = "senderId")
+    private UserEntity sender;
 
-    // many-to-one with property entity
+    // many-to-one with user entity
     @ManyToOne
-    @JoinColumn(name = "propertyId")
-    private PropertyEntity propertyEntity;
+    @JoinColumn(name = "receiverId")
+    private UserEntity receiver;
+
+    private LocalDateTime timestamp;
 
 }
