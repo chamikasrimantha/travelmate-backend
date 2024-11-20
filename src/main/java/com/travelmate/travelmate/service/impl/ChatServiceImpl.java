@@ -41,29 +41,18 @@ public class ChatServiceImpl implements ChatService {
     }
 
     @Override
-    public List<ChatEntity> getAllMessages(Long senderId, Long receiverId) {
-        // Fetch sender and receiver entities
-        UserEntity sender = userRepository.findById(senderId)
-                .orElseThrow(() -> new RuntimeException("Sender not found"));
-        UserEntity receiver = userRepository.findById(receiverId)
-                .orElseThrow(() -> new RuntimeException("Receiver not found"));
-
-        return chatRepository.findAllBySenderAndReceiver(sender, receiver);
-    }
-
-    @Override
-    public List<ChatEntity> getMessagesByReceiver(Long receiverId) {
+    public List<ChatEntity> getMessagesByReceiver(Long id) {
         // Fetch receiver entity
-        UserEntity receiver = userRepository.findById(receiverId)
+        UserEntity receiver = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Receiver not found"));
 
         return chatRepository.findAllByReceiver(receiver);
     }
 
     @Override
-    public List<ChatEntity> getMessagesBySender(Long senderId) {
+    public List<ChatEntity> getMessagesBySender(Long id) {
         // Fetch sender entity
-        UserEntity sender = userRepository.findById(senderId)
+        UserEntity sender = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Sender not found"));
 
         return chatRepository.findAllBySender(sender);

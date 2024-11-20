@@ -82,7 +82,7 @@ public class WebSecurityConfig {
                                 "/categories/**",
                                 "/admin-announcements/**",
                                 "/partner-announcements/**",
-                                "chat/**",
+                                "/chat/**",
                                 // "/bookings/**",
                                 "/v3/api-docs/**",
                                 "v3/api-docs.yaml",

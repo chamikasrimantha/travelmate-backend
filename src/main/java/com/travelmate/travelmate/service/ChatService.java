@@ -10,7 +10,6 @@ import com.travelmate.travelmate.entity.ChatEntity;
 @Service
 public interface ChatService {
     ChatEntity sendMessage(ChatDto chatDto);
-    List<ChatEntity> getMessagesBySender(Long senderId);
-    List<ChatEntity> getMessagesByReceiver(Long receiverId);
-    List<ChatEntity> getAllMessages(Long senderId, Long receiverId);
+    List<ChatEntity> getMessagesBySender(Long id);
+    List<ChatEntity> getMessagesByReceiver(Long id);
 }
